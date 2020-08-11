@@ -1,0 +1,83 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.SpringLayout;
+import java.awt.Label;
+import java.awt.Font;
+import java.awt.Button;
+import java.awt.TextField;
+
+public class Rating {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Rating window = new Rating();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Rating() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
+		
+		Label label = new Label("Thanks for the Ride");
+		label.setFont(new Font("Dialog", Font.BOLD, 16));
+		springLayout.putConstraint(SpringLayout.NORTH, label, 33, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, label, 65, SpringLayout.WEST, frame.getContentPane());
+		frame.getContentPane().add(label);
+		
+		Label label_1 = new Label("Rate the Ride out of 5");
+		label_1.setFont(new Font("Dialog", Font.BOLD, 12));
+		springLayout.putConstraint(SpringLayout.NORTH, label_1, 36, SpringLayout.SOUTH, label);
+		springLayout.putConstraint(SpringLayout.WEST, label_1, 0, SpringLayout.WEST, label);
+		frame.getContentPane().add(label_1);
+		
+		Label label_2 = new Label("Your Current Balance");
+		springLayout.putConstraint(SpringLayout.NORTH, label_2, 32, SpringLayout.SOUTH, label_1);
+		springLayout.putConstraint(SpringLayout.WEST, label_2, 0, SpringLayout.WEST, label);
+		label_2.setFont(new Font("Dialog", Font.BOLD, 12));
+		frame.getContentPane().add(label_2);
+		
+		Button button = new Button("Exit");
+		springLayout.putConstraint(SpringLayout.SOUTH, button, -21, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, button, -88, SpringLayout.EAST, frame.getContentPane());
+		frame.getContentPane().add(button);
+		
+		TextField textField = new TextField();
+		springLayout.putConstraint(SpringLayout.NORTH, textField, 37, SpringLayout.SOUTH, label);
+		springLayout.putConstraint(SpringLayout.WEST, textField, 6, SpringLayout.EAST, label_1);
+		springLayout.putConstraint(SpringLayout.EAST, textField, 71, SpringLayout.EAST, label_1);
+		frame.getContentPane().add(textField);
+		
+		TextField textField_1 = new TextField();
+		springLayout.putConstraint(SpringLayout.NORTH, textField_1, 32, SpringLayout.SOUTH, textField);
+		springLayout.putConstraint(SpringLayout.WEST, textField_1, 6, SpringLayout.EAST, label_2);
+		springLayout.putConstraint(SpringLayout.EAST, textField_1, 0, SpringLayout.EAST, textField);
+		frame.getContentPane().add(textField_1);
+	}
+
+}

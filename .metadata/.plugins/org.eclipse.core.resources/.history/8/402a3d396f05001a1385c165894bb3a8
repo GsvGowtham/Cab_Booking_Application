@@ -1,0 +1,71 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class AddingMoney {
+
+	private JFrame frame;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void open() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddingMoney window = new AddingMoney();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public AddingMoney() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblHowMuchMoney = new JLabel("How much money do you want to add");
+		lblHowMuchMoney.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblHowMuchMoney.setBounds(34, 26, 314, 62);
+		frame.getContentPane().add(lblHowMuchMoney);
+		
+		textField = new JTextField();
+		textField.setBounds(34, 91, 107, 31);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(335, 227, 89, 23);
+		frame.getContentPane().add(btnCancel);
+		
+		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				(null,"Rs." +" Money added successfully");
+			}
+		});
+		btnOk.setBounds(145, 144, 89, 23);
+		frame.getContentPane().add(btnOk);
+	}
+}

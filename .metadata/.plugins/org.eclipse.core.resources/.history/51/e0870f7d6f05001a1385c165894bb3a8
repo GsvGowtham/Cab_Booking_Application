@@ -1,0 +1,103 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.SpringLayout;
+import java.awt.Button;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Booking {
+
+	private JFrame frame2;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void NewScreen() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Booking window = new Booking();
+					window.frame2.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Booking() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame2 = new JFrame();
+		frame2.setBounds(100, 100, 450, 300);
+		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SpringLayout springLayout = new SpringLayout();
+		frame2.getContentPane().setLayout(springLayout);
+		
+		Button button = new Button("Book a CAB");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame2.dispose();
+			//Place p= new Place();
+				Place.open();
+				
+			}
+		});
+		springLayout.putConstraint(SpringLayout.NORTH, button, 42, SpringLayout.NORTH, frame2.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, button, 52, SpringLayout.WEST, frame2.getContentPane());
+		button.setFont(new Font("Dialog", Font.BOLD, 16));
+		frame2.getContentPane().add(button);
+		
+		Button button_1 = new Button("Wallet Balance");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame2.dispose();
+				//Wallet bal=new Wallet();
+				Wallet.open();
+			}
+		});
+		springLayout.putConstraint(SpringLayout.NORTH, button_1, 88, SpringLayout.NORTH, frame2.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, button, -24, SpringLayout.NORTH, button_1);
+		springLayout.putConstraint(SpringLayout.EAST, button, 0, SpringLayout.EAST, button_1);
+		springLayout.putConstraint(SpringLayout.WEST, button_1, 52, SpringLayout.WEST, frame2.getContentPane());
+		button_1.setFont(new Font("Dialog", Font.BOLD, 16));
+		frame2.getContentPane().add(button_1);
+		
+		Button button_2 = new Button("ADD Money to Wallet");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame2.dispose();
+				AddingMoney.open();
+			}
+		});
+		springLayout.putConstraint(SpringLayout.NORTH, button_2, 134, SpringLayout.NORTH, frame2.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, button_1, -24, SpringLayout.NORTH, button_2);
+		springLayout.putConstraint(SpringLayout.EAST, button_1, 0, SpringLayout.EAST, button_2);
+		springLayout.putConstraint(SpringLayout.WEST, button_2, 52, SpringLayout.WEST, frame2.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, button_2, -202, SpringLayout.EAST, frame2.getContentPane());
+		button_2.setFont(new Font("Dialog", Font.BOLD, 16));
+		frame2.getContentPane().add(button_2);
+		
+		Button button_3 = new Button("Logout");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		springLayout.putConstraint(SpringLayout.WEST, button_3, -108, SpringLayout.EAST, frame2.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, button_3, -23, SpringLayout.SOUTH, frame2.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, button_3, -21, SpringLayout.EAST, frame2.getContentPane());
+		button_3.setFont(new Font("Dialog", Font.BOLD, 16));
+		frame2.getContentPane().add(button_3);
+	}
+
+}
